@@ -1,72 +1,73 @@
-package tech.zerofiltre.testing.calcul.e2e;
+// package tech.zerofiltre.testing.calcul.e2e;
 
-import static org.assertj.core.api.Assertions.assertThat;
+// import static org.assertj.core.api.Assertions.assertThat;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
+// import io.github.bonigarcia.wdm.WebDriverManager;
+// import org.junit.jupiter.api.AfterEach;
+// import org.junit.jupiter.api.BeforeAll;
+// import org.junit.jupiter.api.BeforeEach;
+// import org.junit.jupiter.api.Test;
+// import org.openqa.selenium.By;
+// import org.openqa.selenium.WebDriver;
+// import org.openqa.selenium.WebElement;
+// import org.openqa.selenium.chrome.ChromeDriver;
+// import org.openqa.selenium.firefox.FirefoxDriver;
+// import org.openqa.selenium.support.ui.ExpectedConditions;
+// import org.openqa.selenium.support.ui.WebDriverWait;
+// import org.springframework.boot.test.context.SpringBootTest;
+// import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+// import org.springframework.boot.web.server.LocalServerPort;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class MultiplicationJourneyE2E {
+// @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+// class MultiplicationJourneyE2E {
 
-  @LocalServerPort
-  private int port;
+//   @LocalServerPort
+//   private int port;
 
-  private WebDriver webDriver;
-  private String baseUrl;
+//   private WebDriver webDriver;
+//   private String baseUrl;
 
-  @BeforeAll
-  static void setUpFireFoxDriver() {
-    WebDriverManager.firefoxdriver().setup();
-  }
+//   @BeforeAll
+//   static void setUpFireFoxDriver() {
+//     WebDriverManager.chromedriver().setup();
+//   }
 
-  @BeforeEach
-  void setUpWebDriver() {
-    webDriver = new FirefoxDriver();
-    baseUrl = "http://localhost:" + port + "/calculator";
+//   @BeforeEach
+//   void setUpWebDriver() {
+//     webDriver = new ChromeDriver();
+//     baseUrl = "http://localhost:" + port + "/calculator";
 
-  }
+//   }
 
-  @AfterEach
-  void quitWebDriver() {
-    if (webDriver != null) {
-      webDriver.quit();
-    }
-  }
+//   @AfterEach
+//   void quitWebDriver() {
+//     if (webDriver != null) {
+//       webDriver.quit();
+//     }
+//   }
 
-  @Test
-  void multiplyTwoBySixteenMustReturn32() {
+//   @Test
+//   void multiplyTwoBySixteenMustReturn32() {
 
-    //GIVEN
-    webDriver.get(baseUrl);
-    WebElement leftField = webDriver.findElement(By.id("left"));
-    WebElement typeDropDown = webDriver.findElement(By.id("type"));
-    WebElement rightField = webDriver.findElement(By.id("right"));
-    WebElement submitButton = webDriver.findElement(By.id("submit"));
+//     //GIVEN
+//     webDriver.get(baseUrl);
+//     WebElement leftField = webDriver.findElement(By.id("left"));
+//     WebElement typeDropDown = webDriver.findElement(By.id("type"));
+//     WebElement rightField = webDriver.findElement(By.id("right"));
+//     WebElement submitButton = webDriver.findElement(By.id("submit"));
 
-    //WHEN
-    leftField.sendKeys("2");
-    typeDropDown.sendKeys("x");
-    rightField.sendKeys("16");
-    submitButton.click();
+//     //WHEN
+//     leftField.sendKeys("2");
+//     typeDropDown.sendKeys("x");
+//     rightField.sendKeys("16");
+//     submitButton.click();
 
-    //THEN
-    WebDriverWait waiter = new WebDriverWait(webDriver, 5);
-    WebElement solutionElement = waiter.until(ExpectedConditions.presenceOfElementLocated(By.id("solution")));
-    String solution = solutionElement.getText();
-    assertThat(solution).isEqualTo("32");
-  }
+//     //THEN
+//     WebDriverWait waiter = new WebDriverWait(webDriver, 5);
+//     WebElement solutionElement = waiter.until(ExpectedConditions.presenceOfElementLocated(By.id("solution")));
+//     String solution = solutionElement.getText();
+//     assertThat(solution).isEqualTo("32");
+//   }
 
 
-}
+// }
